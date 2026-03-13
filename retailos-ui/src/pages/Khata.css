@@ -1,0 +1,250 @@
+/* Khata Page Styles */
+
+/* Outstanding Card */
+.khata-outstanding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.khata-outstanding-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.khata-outstanding-amount {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Accounts List */
+.khata-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .khata-accounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+}
+
+.khata-account {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  width: 100%;
+  border: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.khata-account:hover {
+  border-color: var(--border-active);
+}
+
+.khata-avatar {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.khata-avatar-lg {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.khata-account-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.khata-account-name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.khata-account-phone {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.khata-account-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.khata-balance-value {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.khata-will-get {
+  color: var(--danger);
+}
+
+.khata-will-give {
+  color: var(--success);
+}
+
+.khata-balance-sub {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+/* Detail View */
+.khata-detail-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.khata-detail-header .btn-ghost {
+  position: absolute;
+  left: var(--space-md);
+  top: var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.khata-detail-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-xl);
+}
+
+.khata-detail-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.khata-detail-phone {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* Balance Card */
+.khata-balance-card {
+  text-align: center;
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.khata-balance-owed {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.khata-balance-clear {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.khata-balance-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.khata-balance-amount {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  display: block;
+}
+
+.khata-balance-owed .khata-balance-amount { color: var(--danger); }
+.khata-balance-clear .khata-balance-amount { color: var(--success); }
+
+/* Actions */
+.khata-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.khata-contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+/* Timeline */
+.khata-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.khata-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+
+.khata-entry-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.khata-entry-gave {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.khata-entry-received {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.khata-entry-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.khata-entry-note {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.khata-entry-date {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.khata-entry-amount {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.khata-amount-gave { color: var(--danger); }
+.khata-amount-received { color: var(--success); }
+
+.khata-amount-input {
+  font-size: var(--font-size-2xl) !important;
+  font-weight: 700 !important;
+  text-align: center;
+  padding: var(--space-lg) !important;
+}

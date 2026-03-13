@@ -1,0 +1,169 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+}
+
+.bottom-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: 0 auto;
+  height: var(--bottom-nav-height);
+  padding: 0 var(--space-sm);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: var(--text-secondary);
+}
+
+.nav-item-active {
+  color: var(--primary-light);
+}
+
+.nav-item-active::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.nav-item-fab {
+  position: relative;
+  top: -16px;
+}
+
+.fab-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-inverse);
+  box-shadow: 0 4px 20px var(--accent-glow), 0 0 40px rgba(245, 158, 11, 0.15);
+  transition: all var(--transition-fast);
+}
+
+.nav-item-fab:hover .fab-btn, .nav-item-fab.nav-item-active .fab-btn {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px var(--accent-glow), 0 0 50px rgba(245, 158, 11, 0.2);
+}
+
+.nav-item-fab::before { display: none; }
+
+/* === Desktop Sidebar === */
+@media (min-width: 768px) {
+  .bottom-nav {
+    top: 0;
+    right: auto;
+    width: 220px;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    background: rgba(10, 10, 18, 0.92);
+  }
+
+  [data-theme="light"] .bottom-nav {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .bottom-nav-inner {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    max-width: none;
+    padding: var(--space-lg) var(--space-sm);
+    gap: var(--space-xs);
+  }
+
+  .bottom-nav-inner::before {
+    content: '🏪 RetailOS';
+    font-size: var(--font-size-lg);
+    font-weight: 800;
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-item {
+    flex-direction: row;
+    gap: var(--space-md);
+    padding: 12px var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .nav-item-active::before {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: 3px;
+    height: 24px;
+    transform: translateY(-50%);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .nav-item-active {
+    background: var(--bg-hover);
+  }
+
+  .nav-label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+  }
+
+  .nav-item-fab {
+    position: static;
+    top: auto;
+    order: -1;
+    margin-bottom: var(--space-md);
+  }
+
+  .fab-btn {
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-md);
+    padding: 12px var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .fab-btn::after {
+    content: 'New Bill';
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+}

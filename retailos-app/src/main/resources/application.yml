@@ -1,0 +1,99 @@
+# ============================================================
+# RetailOS — Application Configuration
+# ============================================================
+
+spring:
+  application:
+    name: retailos
+
+  # ---- Database ----
+  datasource:
+    url: jdbc:postgresql://localhost:5432/retailos
+    username: retailos
+    password: retailos_dev_2026
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 10000
+
+  # ---- JPA / Hibernate ----
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate  # Flyway manages schema
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+
+  # ---- Flyway ----
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  # ---- Redis ----
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5000ms
+
+  # ---- Jackson ----
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+# ---- Server ----
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# ---- Actuator ----
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,flyway
+  endpoint:
+    health:
+      show-details: when_authorized
+
+# ---- RetailOS Custom Properties ----
+retailos:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:Y29tLnJldGFpbG9zLmRldi5zZWNyZXQua2V5LmZvci5kZXZlbG9wbWVudC5vbmx5LjIwMjY=}
+      access-expiration-ms: 900000     # 15 minutes
+      refresh-expiration-ms: 604800000 # 7 days
+
+  file:
+    minio:
+      endpoint: http://localhost:9000
+      access-key: retailos_minio
+      secret-key: retailos_minio_2026
+      bucket: retailos-files
+
+# ---- OpenAPI / Swagger ----
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# ---- Logging ----
+logging:
+  level:
+    com.retailos: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{tenantId}] %-5level %logger{36} - %msg%n"
